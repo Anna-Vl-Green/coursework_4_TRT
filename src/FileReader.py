@@ -8,16 +8,22 @@ logging.basicConfig(level=logging.INFO)
 class FileReader:
 
     def __init__(self, directory="data"):
-
         self.files = []
         self.data_list = []
         self.directory = directory
 
     def find_files(self):
+        """
 
+        :return:
+        """
         self.files = os.listdir(self.directory)
 
     def read_files(self):
+        """
+
+        :return:
+        """
         if len(self.files) > 0:
             for file in self.files:
                 with open(os.path.join(self.directory, file), "r") as f:

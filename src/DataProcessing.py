@@ -5,8 +5,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 class DataProcessing:
-    def __init__(self, operation_data):
-        self.operation_data = operation_data
+    def __init__(self):
         self.executed_operations = []
         self.sorted_operations = []
         self.list_for_public = []
