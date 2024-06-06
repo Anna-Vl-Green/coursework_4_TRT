@@ -4,16 +4,29 @@ from src.FileReader import FileReader
 
 @pytest.fixture(scope="module")
 def file_reader():
+    """
+    Инициализирует объект класса FileReader для тестирования функционала модуля.
+    :return: FileReader
+    """
     return FileReader("test_data")
 
 
 def test_find_files(file_reader):
+    """
+    Тестирует функционал метода поиска файлов в указанной директории (find_files).
+    :param file_reader:FileReader
+    """
     file_reader.find_files()
     assert len(file_reader.files) > 0, "Файлы найдены"
 
 
 def test_read_files(file_reader):
-    result = file_reader.read_files()
+    """
+    Тестирует функционал метода чтения файлов из списка объекта класса FileReader.
+    :param file_reader: FileReader
+    """
+    file_reader.find_files()
+    file_reader.read_files()
     expected = [
         {
             "id": 482520625,
@@ -45,6 +58,7 @@ def test_read_files(file_reader):
             "from": "Счет 59956820797131895975",
             "to": "Счет 43475624104328495820"
         },
+        {},
         {
             "id": 509552992,
             "state": "EXECUTED",
@@ -75,5 +89,20 @@ def test_read_files(file_reader):
             "from": "Visa Platinum 1813166339376336",
             "to": "Счет 97848259954268659635"
         },
+        {
+            "id": 200634844,
+            "state": "CANCELED",
+            "date": "2018-02-13T04:43:11.374324",
+            "operationAmount": {
+                "amount": "42210.20",
+                "currency": {
+                    "name": "руб.",
+                    "code": "RUB"
+                }
+            },
+            "description": "Перевод организации",
+            "from": "Счет 33355011456314142963",
+            "to": "Счет 45735917297559088682"
+        }
     ]
-    assert result == expected, f"Ожидалось {expected}, получено {result}"
+    assert file_reader.data_list == expected, f"Ожидалось {expected}, получено {result}"
