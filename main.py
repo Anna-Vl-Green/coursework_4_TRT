@@ -3,6 +3,10 @@ from src.DataProcessing import DataProcessing
 
 
 def print_messages(messages_list: list):
+    """
+    Функция выводит на печать сообщения из списка сообщений.
+    :param messages_list: list[str]
+    """
     for message in messages_list:
         print(message)
 
