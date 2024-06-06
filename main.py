@@ -1,11 +1,14 @@
 from src.FileReader import FileReader
 from src.DataProcessing import DataProcessing
 
-import src.FileReader
-import src.DataProcessing
 
-clients_operations = FileReader.find_files() # получаем список операций клиента
+if __name__ == '__main__':
+    files_data = FileReader()
+    files_data.find_files()
+    files_data.read_files()
 
-DataProcessing.data_screening(FileReader.read_files())
-
-DataProcessing.print_info()
+    operations_data = DataProcessing()
+    operations_data.data_screening(files_data.data_list)
+    operations_data.data_sort()
+    operations_data.make_output_list()
+    operations_data.print_info()

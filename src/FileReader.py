@@ -1,8 +1,9 @@
 import os
 import json
 import logging
+import config
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=config.LOG_LEVEL)
 
 
 class FileReader:
@@ -14,19 +15,17 @@ class FileReader:
 
     def find_files(self):
         """
-
-        :return:
+        Метод находит файлы в папке (по умолчанию - "data" и создаёт список с их названиями.
         """
         self.files = os.listdir(self.directory)
 
     def read_files(self):
         """
-
-        :return:
+        Метод читает файлы из списка объекта.
         """
         if len(self.files) > 0:
             for file in self.files:
-                with open(os.path.join(self.directory, file), "r") as f:
-                    self.data_list[file] = json.loads(file)
+                with open(os.path.join(self.directory, file), "r", encoding='UTF-8') as f:
+                    self.data_list.extend(json.loads(f.read()))
         else:
             logging.info(f'Выполненные операции отсутствуют')
