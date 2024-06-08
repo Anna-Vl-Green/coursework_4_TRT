@@ -5,6 +5,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 class DataProcessing:
+    """
+    TODO
+    """
     def __init__(self):
         self.executed_operations = []
         self.sorted_operations = []
@@ -55,7 +58,11 @@ class DataProcessing:
         и список сообщений с данными об операциях.
         :param message_list: list[str]
         """
+        space = " "
         for operation in self.list_for_public:
+
+
+
             card_from = operation.get("from", "")
             masked_number_card_from = card_from[0:5] + " " + card_from[4:6] + "*" * 2 + "" + "*" * 4 + card_from[-4:] \
                 if card_from else ""

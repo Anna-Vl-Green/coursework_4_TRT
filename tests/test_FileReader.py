@@ -17,7 +17,7 @@ def test_find_files(file_reader):
     :param file_reader:FileReader
     """
     file_reader.find_files()
-    assert len(file_reader.files) > 0, "Файлы найдены"
+    assert len(file_reader.files) > 0, "Файлы не найдены"
 
 
 def test_read_files(file_reader):

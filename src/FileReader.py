@@ -7,6 +7,9 @@ logging.basicConfig(level=config.LOG_LEVEL)
 
 
 class FileReader:
+    """
+    TODO
+    """
 
     def __init__(self, directory="data"):
         self.directory = directory
