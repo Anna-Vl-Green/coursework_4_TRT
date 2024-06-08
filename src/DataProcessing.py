@@ -13,8 +13,6 @@ class DataProcessing:
         self.sorted_operations = []
         self.list_for_public = []
         self.messages_list = []
-        self.info_card_from
-        self.info_card_to
 
     def __repr__(self):
         return "Объект обрабатывает данные из файлов"
@@ -66,18 +64,23 @@ class DataProcessing:
             split_card_from = card_from.split(" ")
             number_from = split_card_from[-1]
             if len(number_from) == 16:
-                masked_number_from = number_from[0:7] + "*" * len(number_from[7:13]) + number_from[13:]
-                masked_number_from = masked_number_from[:5] + space + masked_number_from[5:9] + space + masked_number_from[9:13] \
-                                + space + masked_number_from[13:]
+                masked_number_from = number_from[0:6] + "*" * len(number_from[6:12]) + number_from[12:]
+                operation['from'] = (space.join(split_card_from[:-1]) + space + masked_number_from[:4] + space
+                                     + masked_number_from[4:8] + space + masked_number_from[8:12] + space
+                                     + masked_number_from[12:])
             elif len(number_from) == 20:
                 masked_number_from = number_from[0:7] + "*" * len(number_from[7:17]) + number_from[17:]
-                masked_number_from = masked_number_from[:5] + space + masked_number_from[5:9] + space + masked_number_from[9:13] \
-                                + space + masked_number_from[13:17] + space + masked_number_from[17:]
+                operation['from'] = (space.join(split_card_from[:-1]) + space + masked_number_from[:5] + space
+                                     + masked_number_from[5:9] + space + masked_number_from[9:13] + space +
+                                     masked_number_from[13:17] + space + masked_number_from[17:])
             else:
                 logging.info(f'Некорректный номер источника платежа')
+                operation['from'] = ''
             card_to = operation.get("to", "")
             split_card_to = card_to.split(" ")
             number_to = split_card_to[-1]
-            masked_number_to = "**" + number_to[-4:]
-        self.info_card_from = card_from[:-1] + masked_number_from
-        self.info_card_to = card_to[:-1] + masked_number_to
+            operation['to'] = space.join(split_card_to[:-1]) + " **" + number_to[-4:]
+
+    def create_messages(self):
+        for operation in self.list_for_public:
+            pass

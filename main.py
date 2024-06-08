@@ -20,5 +20,5 @@ if __name__ == '__main__':
     operations_data.data_screening(files_data.data_list)
     operations_data.data_sort()
     operations_data.make_output_list()
-    operations_data.create_messages()
+    operations_data.masking_info()
     print_messages(operations_data.messages_list)
