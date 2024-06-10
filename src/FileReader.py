@@ -8,7 +8,7 @@ logging.basicConfig(level=config.LOG_LEVEL)
 
 class FileReader:
     """
-    TODO
+    Объект находит файлы и прочитывает их.
     """
 
     def __init__(self, directory="data"):
@@ -17,7 +17,20 @@ class FileReader:
         self.data_list = []
 
     def __repr__(self):
-        return "Объект читает файлы"
+        return (f"FileReader"
+                f"("
+                f"directory={self.directory!r}"
+                f"files={self.files!r}"
+                f"data_list={self.data_list!r}"
+                f")")
+
+    def __str__(self):
+        return (f"FileReader"
+                f"("
+                f"directory={self.directory}"
+                f"files={self.files}"
+                f"data_list={self.data_list}"
+                f")")
 
     def find_files(self):
         """

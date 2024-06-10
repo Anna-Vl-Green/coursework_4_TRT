@@ -21,4 +21,5 @@ if __name__ == '__main__':
     operations_data.data_sort()
     operations_data.make_output_list()
     operations_data.masking_info()
+    operations_data.create_messages()
     print_messages(operations_data.messages_list)
