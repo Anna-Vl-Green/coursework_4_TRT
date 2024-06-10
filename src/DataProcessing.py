@@ -1,4 +1,5 @@
 import logging
+from config import DATA_COUNT
 from datetime import datetime
 
 logging.basicConfig(level=logging.INFO)
@@ -58,10 +59,11 @@ class DataProcessing:
 
     def make_output_list(self):
         """
-        Метод создаёт список из 5 последних успешных транзакций клиента.
+        Метод создаёт список из последних успешных транзакций клиента согласно требованиям,
+        указанным в config.py.
         """
-        if len(self.sorted_operations) > 5:
-            while len(self.list_for_public) < 5:
+        if len(self.sorted_operations) > DATA_COUNT:
+            while len(self.list_for_public) < DATA_COUNT:
                 self.list_for_public.append(self.sorted_operations.pop(0))
         else:
             for operation in self.sorted_operations:

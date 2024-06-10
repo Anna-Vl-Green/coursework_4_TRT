@@ -19,16 +19,16 @@ class FileReader:
     def __repr__(self):
         return (f"FileReader"
                 f"("
-                f"directory={self.directory!r}"
-                f"files={self.files!r}"
+                f"directory={self.directory!r}, "
+                f"files={self.files!r}, "
                 f"data_list={self.data_list!r}"
                 f")")
 
     def __str__(self):
         return (f"FileReader"
                 f"("
-                f"directory={self.directory}"
-                f"files={self.files}"
+                f"directory={self.directory}, "
+                f"files={self.files}, "
                 f"data_list={self.data_list}"
                 f")")
 
