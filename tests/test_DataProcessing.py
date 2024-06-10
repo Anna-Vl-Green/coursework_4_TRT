@@ -29,15 +29,6 @@ def test_data_screening_empty(data_process):
     assert data_process.executed_operations == []
 
 
-def test_data_screening(data_process):
-    """
-    Тестирует функционал метода фильтрации данных об операциях (data_screening).
-    :param file_reader.data_list: list[dict]
-    """
-    data_process.data_screening(test_data)
-    assert data_process.executed_operations == correct_data
-
-
 def test_data_sort_empty(data_process):
     """
     Тестирует функционал вывода системного сообщения об отсутствии данных для сортировки.
@@ -45,6 +36,15 @@ def test_data_sort_empty(data_process):
     data_process.data_screening([])
     data_process.data_sort()
     assert data_process.sorted_operations == []
+
+
+def test_data_screening(data_process):
+    """
+    Тестирует функционал метода фильтрации данных об операциях (data_screening).
+    :param file_reader.data_list: list[dict]
+    """
+    data_process.data_screening(test_data)
+    assert data_process.executed_operations == correct_data
 
 
 def test_data_sort(data_process):
